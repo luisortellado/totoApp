@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, TextInput, Button, FlatList, StyleSheet} from 'react-native';
 import TaskItem from '../../components/TaskItem';
+import {generateId} from '../../utils/utils';
 
 type Task = {
   id: string;
@@ -16,7 +17,7 @@ const TodoScreen = () => {
     if (task.trim()) {
       setTasks(prevTasks => [
         ...prevTasks,
-        {id: Date.now().toString(), text: task, completed: false},
+        {id: generateId(), text: task, completed: false},
       ]);
       setTask('');
     }
